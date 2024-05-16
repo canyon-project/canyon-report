@@ -55,7 +55,7 @@ function App() {
   // console.log(dataSource, 'dataSource');
   return (
     <div>
-      <div style={{border:'1px solid #eee',margin:'20px',padding:'20px'}}>
+      <div className={'p-[20px]'}>
         <ConfigProvider
           theme={{
             token: {
