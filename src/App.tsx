@@ -1,8 +1,11 @@
 // import { useState } from 'react';
 
-import { Table } from 'antd';
+import { ConfigProvider, Table } from 'antd';
 
+import JavaReport from './components/java/report.tsx';
+import EditorJacoco from './EditorJacoco';
 import { coverage, percent, removeHyphens, removeHyphensAndConvertToNumber } from './test.ts';
+import {mergeCoverage} from "./merge.ts";
 
 function App() {
   // 分层
@@ -21,7 +24,7 @@ function App() {
         const x = record.counter.find((item) => item['type'] === 'INSTRUCTION');
         const missed = x['missed'];
         const covered = x['covered'];
-        console.log(missed, covered, 'missed, covered');
+        // console.log(missed, covered, 'missed, covered');
         return <div>{percent(covered, covered + missed)}</div>;
       },
     },
@@ -46,11 +49,25 @@ function App() {
       dataIndex: 'x1',
     },
   ];
-  const dataSource = removeHyphens(removeHyphensAndConvertToNumber(coverage.report.package[0]['class'][3]['method']));
-  console.log(dataSource, 'dataSource');
+  const dataSource = removeHyphens(removeHyphensAndConvertToNumber(coverage.report));
+
+  console.log(mergeCoverage(dataSource,dataSource))
+  // console.log(dataSource, 'dataSource');
   return (
     <div>
-      <Table dataSource={dataSource} columns={columns} />
+      <div style={{border:'1px solid #eee',margin:'20px',padding:'20px'}}>
+        <ConfigProvider
+          theme={{
+            token: {
+              borderRadius: 0,
+            },
+          }}
+        >
+          <JavaReport sourcecode={`const a= 1`} coverage={dataSource} />
+          {/*<Table dataSource={dataSource} columns={columns} />*/}
+          {/*<EditorJacoco />*/}
+        </ConfigProvider>
+      </div>
     </div>
   );
 }
