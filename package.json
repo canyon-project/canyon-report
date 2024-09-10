@@ -1,0 +1,35 @@
+{
+  "name": "canyon-report",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node main.js",
+    "prepare": "webpack --config webpack.config.js --mode production",
+    "prepare:watch": "webpack --config webpack.config.js --watch --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.5",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
+    "is-windows": "^1.0.2",
+    "istanbul-lib-coverage": "^3.0.0",
+    "mocha": "^6.2.2",
+    "nyc": "^15.0.0-beta.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "istanbul-lib-coverage": "^3.2.2",
+    "istanbul-reports": "^3.1.7",
+    "html-escaper": "^2.0.0",
+    "istanbul-lib-report": "^3.0.0"
+  }
+}
