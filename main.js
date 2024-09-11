@@ -1,16 +1,16 @@
 const libReport = require('istanbul-lib-report');
-const reports = require('istanbul-reports');
+const reports = require('./index');
 const libCoverage = require('istanbul-lib-coverage');
 const cov = require('./coverage-final.json');
 
 const _cov = Object.entries(cov).reduce((acc, [key, value]) => {
-    acc[key.replaceAll('/builds','/Users/tzhangm/github.com')] = {
+    acc[key.replaceAll('/builds','/Users/zhangtao/github.com')] = {
         ...value,
-        path: key.replaceAll('/builds','/Users/tzhangm/github.com')
+        path: key.replaceAll('/builds','/Users/zhangtao/github.com')
     }
     return acc;
 }, {});
-console.log(_cov);
+// console.log(_cov);
 // coverageMap, for instance, obtained from istanbul-lib-coverage
 const coverageMap = libCoverage.createCoverageMap(_cov);
 
